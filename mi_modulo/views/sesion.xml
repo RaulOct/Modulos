@@ -1,0 +1,42 @@
+<odoo>
+    <record id="view_form_mi_sesion" model="ir.ui.view">
+        <field name="name">mi.sesion.form</field>
+        <field name="model">mi.sesion</field>
+        <field name="arch" type="xml">
+            <form string="Sesión">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="trainer_id"/>
+                        <field name="start_datetime"/>
+                        <field name="duration"/>
+                        <field name="attendee_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_mi_sesion" model="ir.ui.view">
+        <field name="name">mi.sesion.tree</field>
+        <field name="model">mi.sesion</field>
+        <field name="arch" type="xml">
+            <tree string="Sesiones">
+                <field name="name"/>
+                <field name="trainer_id"/>
+                <field name="start_datetime"/>
+                <field name="duration"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_mi_sesion" model="ir.actions.act_window">
+        <field name="name">Sesiones</field>
+        <field name="res_model">mi.sesion</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_mi_sesion_root" name="Formación"/>
+    <menuitem id="menu_mi_sesion" name="Sesiones"
+              parent="menu_mi_sesion_root" action="action_mi_sesion"/>
+</odoo>
