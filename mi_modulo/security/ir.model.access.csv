@@ -1,3 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mi_sesion,access.mi.sesion,model_mi_sesion,,1,1,1,1
-
+access_mi_modulo_mi_modulo,mi_modulo.mi_modulo,model_mi_modulo_mi_modulo,base.group_user,1,1,1,1

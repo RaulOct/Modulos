@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_campaign,access_campaign,model_utm_campaign,,1,1,1,1
+access_pipes,access_pipes,model_utm_pipes,,1,1,1,1
+access_pipe,access_pipe,model_utm_pipe,,1,1,1,1
+access_content,access_content,model_utm_content,,1,1,1,1
+access_utm,access_utm,model_utm_utm,,1,1,1,1
+access_sources,access_sources,model_utm_sources,,1,1,1,1
+access_mediums,access_mediums,model_utm_mediums,,1,1,1,1
+access_hide_pipes,access_hide_pipes,model_utm_hide_pipes,,1,1,1,1
+
+

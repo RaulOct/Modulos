@@ -1,32 +1,32 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "mi_modulo",
+    'name': "utm_ideas_p",
 
-    'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+    'summary': "Módulo para realizar tracking de usuarios con el modelo UTM.",
 
     'description': """
-        Long description of module's purpose
+        
     """,
 
-    'author': "My Company",
-    'website': "https://www.yourcompany.com",
+    'author': "Octupus",
+    'website': "https://Octupus.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
-    'category': 'Uncategorized',
+    'category': 'CRM',
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['crm'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        # Archivo de inicialización de datos
+        'data/utm_medium_data.xml',
+        'security/ir.model.access.csv',
         'views/pipes.xml',
-        'views/templates.xml',
+        'views/campaign.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
