@@ -87,6 +87,37 @@
         <field name="view_mode">graph,pivot</field>
     </record>
 
+    <record id="view_campaign_form_smart_button" model="ir.ui.view">
+        <field name="name">utm.campaign.form.smart_button</field>
+        <field name="model">utm.campaign</field>
+        <field name="inherit_id" ref="view_campaign_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet" position="before">
+                <field name="pipe_count" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//form/sheet/group[1]" position="before">
+                <div class="oe_button_box" name="button_box">
+                    <button class="oe_stat_button"
+                        icon="fa-bar-chart"
+                        type="action"
+                        name="%(action_campaign_pipes_filtered)d"
+                        help="Ver el desglose del tráfico de esta campaña por sus canales (Pipes)"
+                        context="{'search_default_campaign_id': active_id, 'graph_group_by': 'source_id'}">
+
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="pipe_count" widget="statinfo" nolabel="1"/>
+                            </span>
+                            <span class="o_stat_text">Tráfico Canal</span>
+                        </div>
+                    </button>
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+
 
     <record id="view_campaign_search" model="ir.ui.view">
         <field name="name">utm.campaign.search</field>
@@ -96,6 +127,30 @@
                 <field name="name"/>
                 <field name="start_date"/>
             </search>
+        </field>
+    </record>
+
+    <record id="view_pipe_graph" model="ir.ui.view">
+        <field name="name">utm.pipe.graph</field>
+        <field name="model">utm.pipe</field>
+        <field name="arch" type="xml">
+            <graph string="Tráfico de Pipes por Fuente y Medio" type="bar" stacked="True">
+                <field name="source_id" type="row"/>
+                <field name="medium_id" type="col"/>
+                <field name="traffic" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_pipe_pivot" model="ir.ui.view">
+        <field name="name">utm.pipe.pivot</field>
+        <field name="model">utm.pipe</field>
+        <field name="arch" type="xml">
+            <pivot string="Análisis Pivot de Pipes">
+                <field name="source_id" type="row"/>
+                <field name="medium_id" type="col"/>
+                <field name="traffic" type="measure"/>
+            </pivot>
         </field>
     </record>
 
@@ -113,15 +168,13 @@
     </record>
 
     <menuitem id="menu_campaign_root" name="Campañas"/>
-
+    <menuitem id="menu_campaign" name="Gestión de Campañas"
+              parent="menu_campaign_root" action="action_campaign"/>
     <menuitem id="menu_campaign_dashboard"
           name="Dashboard"
           parent="menu_campaign_root"
           action="action_campaign_dashboard"/>
-    <menuitem id="menu_campaign" name="Gestión de Campañas"
-              parent="menu_campaign_root" action="action_campaign"/>
 </odoo>
-
 
 
 

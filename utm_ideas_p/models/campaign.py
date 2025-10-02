@@ -26,11 +26,17 @@ class Campaign(models.Model):
         inverse_name='campaign_id',
         string='Pipes'
     )
+    # Campo calculado para contar los pipes
+    pipe_count = fields.Integer(
+        string='Pipes',
+        compute='_compute_pipe_count',
+        store=True  # Almacenar el conteo puede ser útil para búsquedas
+    )
 
-    # 🚨 MÉTODO DE CÓMPUTO CORREGIDO 🚨
-    # 1. Renombrado a _compute_total_traffic (convención de Odoo).
-    # 2. Uso de @api.depends para rastrear cambios en pipe_ids.
-    # 3. Iteración sobre self y asignación al campo del registro.
+    @api.depends('pipe_ids')
+    def _compute_pipe_count(self):
+        for campaign in self:
+            campaign.pipe_count = len(campaign.pipe_ids)
 
     @api.depends('pipe_ids.traffic')
     def _compute_total_traffic(self):
